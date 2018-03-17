@@ -17,18 +17,8 @@ public class Produto {
     private ArrayList<Usuario> usuario;
     private ArrayList<Categoria> categoria;
 
-    public Produto(int id, String nome, String descricao, String slug, LocalDate dtInclusao, LocalDate dtUpdate, int quantEstoque, float preco, String codBarras, ArrayList<Usuario> usuario, ArrayList<Categoria> categoria) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.slug = slug;
-        this.dtInclusao = dtInclusao;
-        this.dtUpdate = dtUpdate;
-        this.quantEstoque = quantEstoque;
-        this.preco = preco;
-        this.codBarras = codBarras;
-        this.usuario = usuario;
-        this.categoria = categoria;
+    public Produto() {
+        
     }
 
     public int getId() {

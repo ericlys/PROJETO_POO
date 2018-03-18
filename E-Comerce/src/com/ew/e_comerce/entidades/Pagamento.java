@@ -1,5 +1,5 @@
 
-package com.ew.e_comerce;
+package com.ew.e_comerce.entidades;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

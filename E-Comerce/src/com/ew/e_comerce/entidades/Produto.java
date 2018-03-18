@@ -1,4 +1,4 @@
-package com.ew.e_comerce;
+package com.ew.e_comerce.entidades;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -176,7 +176,7 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "Produto{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", slug=" + slug + ", dtInclusao=" + dtInclusao + ", dtUpdate=" + dtUpdate + ", quantEstoque=" + quantEstoque + ", preco=" + preco + ", codBarras=" + codBarras + ", usuario=" + usuario + ", categoria=" + categoria + '}';
+        return "(" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", slug=" + slug + ", Data de Inclusão=" + dtInclusao + ", Data de Update=" + dtUpdate + ", Quantidae em estoque=" + quantEstoque + ", Preço=" + preco + ", Codigo de barras=" + codBarras + ", usuario=" + usuario + ", categoria=" + categoria + ')';
     }
 
  

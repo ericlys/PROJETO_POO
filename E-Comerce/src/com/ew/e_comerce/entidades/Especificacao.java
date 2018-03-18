@@ -1,4 +1,4 @@
-package com.ew.e_comerce;
+package com.ew.e_comerce.entidades;
 
 import java.util.ArrayList;
 

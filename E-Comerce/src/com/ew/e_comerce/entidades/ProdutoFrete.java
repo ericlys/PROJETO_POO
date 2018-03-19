@@ -3,9 +3,21 @@ package com.ew.e_comerce.entidades;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Essa classe contém dados do relacionamento entre produto e frete;
+ * @author Eríclys e Wanileton
+ * @version 1.0
+ */
+
 public class ProdutoFrete {
     private ArrayList<Produto> produto;
     private ArrayList<Frete> frete;
+    
+    /**
+     * Construtor da classe "ProdutoFrete"
+     * @param produto Atributo que armazena o identificador do frete que pertencente a algum produto
+     * @param frete Atributo que armazena o identificador do produto que é possui um frete
+     */
 
     public ProdutoFrete(ArrayList<Produto> produto, ArrayList<Frete> frete) {
         this.produto = produto;
@@ -55,8 +67,5 @@ public class ProdutoFrete {
             return false;
         }
         return true;
-    }
-    
-    
-    
+    }   
 }

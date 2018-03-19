@@ -2,6 +2,12 @@ package com.ew.e_comerce.entidades;
 
 import java.time.LocalDate;
 
+/**
+ * Relação que armazena dados de cada usuário da loja;
+ * @author Eríclys e Wanileton
+ * @version 1.0
+ */
+
 public class Usuario {
 
     private String id;
@@ -11,6 +17,17 @@ public class Usuario {
     private String senha;
     private LocalDate dtCriacao;
     private String permissao; //usuario, administrador....
+    
+    /**
+     * Construtor da classe "Usuario"
+     * @param id Atributo que representa a identificação do usuário
+     * @param nome Atributo que representa o nome do usuário
+     * @param sobrenome Atributo que representa o sobrenome do usuário
+     * @param email Atributo que representa o email do usuário
+     * @param senha Atributo que representa a senha da conta do usuário
+     * @param dtCriacao Atributo que representa a data de criação da conta do usuário
+     * @param permissao Atributo que armazena a permissão para o perfil do usuário
+     */
 
     public Usuario(String id, String nome, String sobrenome, String email, String senha, LocalDate dtCriacao, String permissao) {
         this.id = id;

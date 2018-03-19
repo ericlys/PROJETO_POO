@@ -3,9 +3,21 @@ package com.ew.e_comerce.entidades;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Classe que armazena dados do relacionamento entre fornecedor e produto;
+ * @author Eríclys e Wanielton
+ * @version 1.0
+ */
+
 public class Abastece {
     private ArrayList<Fornecedor> fornecedor;
     private ArrayList<Produto> produto;
+    
+    /**
+     * Construtor para a classe "Abastece"
+     * @param fornecedor Armazena o fornecedor que abastece algum produto
+     * @param produto Armazena o produto que é abastecido por um fornecedor
+     */
 
     public Abastece(ArrayList<Fornecedor> fornecedor, ArrayList<Produto> produto) {
         this.fornecedor = fornecedor;

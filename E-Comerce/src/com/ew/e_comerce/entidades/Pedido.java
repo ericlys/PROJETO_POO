@@ -1,9 +1,14 @@
-
 package com.ew.e_comerce.entidades;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
+
+/**
+ * Essa classe contém dados de cada pedido;
+ * @author Eríclys e Wanileton
+ * @version 1.0
+ */
 
 public class Pedido {
     private int id;
@@ -14,6 +19,18 @@ public class Pedido {
     private ArrayList<Usuario> usuario;
     private ArrayList<Destinatario> endereco;
     private ArrayList<Envio> envio;
+    
+    /**
+     * Construtor da classe "Pedido"
+     * @param id Atributo que representa a identificação para o pedido
+     * @param status Atributo que representa status para o pedido
+     * @param nfe Nota fiscal eletrônica
+     * @param data Atributo que representa data para o pedido
+     * @param hora Atributo que representa a hora para o pedido
+     * @param usuario Atributo que armazena o Usuário que realizam um pedido
+     * @param endereco Atributo que armazena o endereço para o qual será enviado o pedido
+     * @param envio Atributo que armazena o modo pelo qual o produto foi enviado
+     */
 
     public Pedido(int id, String status, String nfe, LocalDate data, LocalDate hora, ArrayList<Usuario> usuario, ArrayList<Destinatario> endereco, ArrayList<Envio> envio) {
         this.id = id;
@@ -146,9 +163,5 @@ public class Pedido {
     @Override
     public String toString() {
         return "Pedido{" + "id=" + id + ", status=" + status + ", nfe=" + nfe + ", data=" + data + ", hora=" + hora + ", usuario=" + usuario + ", endereco=" + endereco + ", envio=" + envio + '}';
-    }
-
-    
-    
-    
+    }   
 }

@@ -7,10 +7,21 @@ import com.ew.e_comerce.dao.ProdutoDao;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+/**
+ * Essa classe contém métodos para o menu de texto, juntamente com os serviços oferecidos no menu;
+ * @author Eríclys e Wanileton
+ * @version 1.0
+ */
+
 public class ProjetoEcommerceTeste {
 
     static ProdutoDao prod = new ProdutoDao();
     static Scanner input = new Scanner(System.in);
+    
+    /**
+     * menu de texto
+     * @param args 
+     */
     
     public static void main(String[] args) {
         int opcao = -1;
@@ -52,6 +63,11 @@ public class ProjetoEcommerceTeste {
             }
         }
     }
+    
+     /**
+     * Método para salvar o produto
+     * @return 
+     */
 
     private static Produto inserirProduto() {
         Produto produto = new Produto();
@@ -90,6 +106,10 @@ public class ProjetoEcommerceTeste {
 
         return produto;
     }
+    
+    /**
+     * Método para cadastrar o produto no sistema
+     */
 
     private static void cadastraProduto() {
         System.out.println("____________CADASTRAR PRODUTO_________");
@@ -101,6 +121,9 @@ public class ProjetoEcommerceTeste {
         }
     }
     
+    /**
+     * Método para atualizar o produto
+     */
     
     private static void alteraProduto() {
         System.out.println("____________ALTERA PRODUTO_________");
@@ -110,6 +133,10 @@ public class ProjetoEcommerceTeste {
             System.out.println("Produto não encontrado");
         }
     }
+    
+    /**
+     * Método para deletar produto da lista
+     */
 
     private static void removerProduto() {
         System.out.println("____________REMOVER PRODUTO_________");
@@ -124,6 +151,10 @@ public class ProjetoEcommerceTeste {
             System.out.println("produto removido com sucesso");
         }
     }
+    
+    /**
+     * Método para listar produtos para o usuario
+     */
 
     public static void listarProdutos() {
         List<Produto> lista = new ArrayList<>();

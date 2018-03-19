@@ -5,6 +5,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Essa classe contém dados dos pagamentos;
+ * @author Eríclys e Wanileton
+ * @version 1.0
+ */
 
 public class Pagamento {
     private String codigo;
@@ -13,6 +18,16 @@ public class Pagamento {
     private float valorPago;
     private ArrayList<Pedido> pedido;
     private ArrayList<Usuario> usuario;
+    
+    /**
+     * Construtor da classe "Pagamento"
+     * @param codigo Atributo que representa a identificação do código para o pagamento
+     * @param dataInc Atributo que representa a data de criação do pagamento
+     * @param nomeTipPag Atributo que representa o nome para o tipo de pagamento
+     * @param valorPago Atributo que representa o valor do pagamento realizado
+     * @param pedido Atributo que armazena o identificador do pedido que foi pago
+     * @param usuario Atributo que armazena o identificador da categoria usuário a qual realiza o pagamento
+     */
 
     public Pagamento(String codigo, LocalDate dataInc, String nomeTipPag, float valorPago, ArrayList<Pedido> pedido, ArrayList<Usuario> usuario) {
         this.codigo = codigo;
@@ -120,6 +135,4 @@ public class Pagamento {
     public String toString() {
         return "Pagamento{" + "codigo=" + codigo + ", dataInc=" + dataInc + ", nomeTipPag=" + nomeTipPag + ", valorPago=" + valorPago + ", pedido=" + pedido + ", usuario=" + usuario + '}';
     }
-    
-    
 }

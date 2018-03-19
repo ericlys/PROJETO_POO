@@ -3,6 +3,12 @@ package com.ew.e_comerce.entidades;
 import java.time.LocalDate;
 import java.util.Objects;
 
+/**
+ * Essa classe contém dados de cada envio de produtos feitos pela loja;
+ * @author Eríclys e Wanileton
+ * @version 1.0
+ */
+
 public class Envio {
     private int id;
     private LocalDate dataEnvio;
@@ -10,6 +16,16 @@ public class Envio {
     private String codRastreamento;
     private String empresaResponsavel;
     private String tempEstEntrega;
+    
+    /**
+     * Contrutor da classe "Envio"
+     * @param id Atributo que representa a identificação para o envio
+     * @param dataEnvio Atributo que representa a data de envio
+     * @param dataEntrega Atributo que representa a data de entrega
+     * @param codRastreamento Atributo que representa o código de rastreamento do envio
+     * @param empresaResponsavel Atributo que representa o nome da empresa que cuida do envio
+     * @param tempEstEntrega Atributo que representa a data estimada da entrega
+     */
 
     public Envio(int id, LocalDate dataEnvio, LocalDate dataEntrega, String codRastreamento, String empresaResponsavel, String tempEstEntrega) {
         this.id = id;
@@ -111,8 +127,5 @@ public class Envio {
             return false;
         }
         return true;
-    }
-    
-    
-    
+    }  
 }

@@ -3,11 +3,25 @@ package com.ew.e_comerce.entidades;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Essa classe armazena dados das categorias de cada produto;
+ * @author Eríclys e Wanielton
+ * @version 1.0
+ */
+
 public class Categoria {
      private int id;
     private String slug;
     private String nome;
     private ArrayList<Categoria> categoria ;
+    
+    /**
+     * Construtor da classe "Categoria"
+     * @param id Atributo que representa a identificação para a categoria
+     * @param slug Atributo que representa o endereço web para a categoria 
+     * @param nome Atributo que representa o nome para a categoria
+     * @param categoria ArrayList que armazena o identificador da categoria a qual pertence outra categoria
+     */
 
     public Categoria(int id, String slug, String nome, ArrayList<Categoria> categoria) {
         this.id = id;
@@ -83,9 +97,5 @@ public class Categoria {
             return false;
         }
         return true;
-    }
-
-    
-    
-    
+    }   
 }

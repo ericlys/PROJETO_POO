@@ -4,12 +4,26 @@ import java.util.ArrayList;
 
 import java.util.Objects;
 
+/**
+ * Classe que armazena dados específicos relacionados a cada produto;
+ * @author Eríclys e Wanileton
+ * @version 1.0
+ */
+
 public class Especificacao {
 
     private int id;
     private String caracteristica;
     private String descricao;
     private ArrayList<Produto> produto;
+    
+    /**
+     * Construtor da classe "Especificacao"
+     * @param id Atributo que representa a identificação para a especificação
+     * @param caracteristica Atributo que representa as caracteristicas para a especificação
+     * @param descricao Atributo que representa a descrição para a caracteristica pertencente a especificação
+     * @param produto Atributo que armazena o identificador do Produto que possui especificações
+     */
 
     public Especificacao(int id, String caracteristica, String descricao, ArrayList<Produto> produto) {
         this.id = id;
@@ -91,6 +105,4 @@ public class Especificacao {
     public String toString() {
         return "Especificacao{" + "id=" + id + ", caracteristica=" + caracteristica + ", descricao=" + descricao + ", produto=" + produto + '}';
     }
-
-    
 }

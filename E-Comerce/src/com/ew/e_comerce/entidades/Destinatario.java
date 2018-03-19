@@ -3,6 +3,12 @@ package com.ew.e_comerce.entidades;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Relação que armazena dados de cada destinatário de cada usuário da loja;
+ * @author Eríclys e Wanileton
+ * @version 1.0
+ */
+
 public class Destinatario {
 
     private int id;
@@ -18,6 +24,23 @@ public class Destinatario {
     private String cep;
     private int numero;
     private ArrayList<Usuario> usuario; 
+    
+    /**
+     * Construtor da classe "Destinatário"
+     * @param id Atributo que representa a identificação para o destinatário
+     * @param nome Atributo que armazena o nome completo do destinatário
+     * @param cpf Atributo que representa o cpf do destinatário
+     * @param telefone Atributo que representa o número de telefone do destinatário
+     * @param idEnd Atributo que representa a identificação para o endereço do destinatário
+     * @param pais Atributo que representa o país para o endereço do destinatário
+     * @param estado Atributo que representa o estado para o endereço do destinatário
+     * @param cidade Atributo que representa a cidade para o endereço do destinatário
+     * @param rua Atributo que representa a rua para o endereço do destinatário
+     * @param complemento Atributo que representa um complemento para o endereço do destinatário
+     * @param cep Atributo que representa o código postal para o endereço do destinatário
+     * @param numero Atributo que armazena o número da casa referente ao endereço do destinatário
+     * @param usuario Atributo que armazena o usuário que tem um destinatário
+     */
 
     public Destinatario(int id, String nome, String cpf, String telefone, int idEnd, String pais, String estado, String cidade, String rua, String complemento, String cep, int numero, ArrayList<Usuario> usuario) {
         this.id = id;
@@ -216,7 +239,4 @@ public class Destinatario {
     public String toString() {
         return "Destinatario{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + ", idEnd=" + idEnd + ", pais=" + pais + ", estado=" + estado + ", cidade=" + cidade + ", rua=" + rua + ", complemento=" + complemento + ", cep=" + cep + ", numero=" + numero + ", usuario=" + usuario + '}';
     }
-
-    
-
 }

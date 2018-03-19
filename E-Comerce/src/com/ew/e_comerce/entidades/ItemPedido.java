@@ -1,8 +1,13 @@
 package com.ew.e_comerce.entidades;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
+
+/**
+ * Essa classe contém dados de cada item que formará o pedido;
+ * @author Eríclys e Wanileton
+ * @version 1.0
+ */
 
 public class ItemPedido {
 
@@ -12,6 +17,16 @@ public class ItemPedido {
     private float precototal;
     private ArrayList<Pedido> pedido;
     private ArrayList<Produto> produto;
+    
+    /**
+     * Construtor da classe "ItemPedido"
+     * @param id Atributo que representa a identificação para o item pedido
+     * @param desconto Atributo que representa o desconto no item pedido
+     * @param quantidade Atributo que representa quantidade de um produto selecionado no item pedido 
+     * @param precototal Atributo que representa o preço total daquele item pedido
+     * @param pedido Atributo que armazena o pedido que possui o item pedido
+     * @param produto Atributo que armazena o produto que é adicionado ao item_pedido
+     */
 
     public ItemPedido(String id, float desconto, int quantidade, float precototal, ArrayList<Pedido> pedido, ArrayList<Produto> produto) {
         this.id = id;

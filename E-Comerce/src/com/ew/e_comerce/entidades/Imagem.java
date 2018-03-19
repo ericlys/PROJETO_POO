@@ -1,8 +1,13 @@
-
 package com.ew.e_comerce.entidades;
 
 import java.util.ArrayList;
 import java.util.Objects;
+
+/**
+ * Essa classe contém dados das imagens de cada produto;
+ * @author Eríclys e Wanileton
+ * @version 1.0
+ */
 
 public class Imagem {
     private int id;

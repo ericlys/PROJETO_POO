@@ -4,9 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 import com.ew.e_comerce.entidades.Produto;
 
-public class ProdutoDao {
+/**
+ * Essa classe contém os métodos CRUD para a classe "Produto".
+ * @author Eríclys e Wanielton
+ * @version 1.0
+ */
 
+public class ProdutoDao {
+    
     List<Produto> listaProdutos = new ArrayList<>();
+    
+    /**
+     * Método para salvar o registro do produto fornecido pelo usuário.
+     * @param produto 
+     * @return False se não for possível adicionar a lista e true se for possível.
+     */
 
     public boolean salvarProduto(Produto produto) {
         try {
@@ -16,6 +28,12 @@ public class ProdutoDao {
         }
         return true;
     }
+    
+    /**
+     * Método para remover um produto já cadastrado.
+     * @param id 
+     * @return Se o id recebido for igual ao id de um dos produtos, este será removido.
+     */
 
     public boolean deletarProduto(int id) {
 
@@ -27,11 +45,22 @@ public class ProdutoDao {
         }
         return true;
     }
+    
+    /**
+     * Método para listar todos os produtos cadastrados.
+     * @return Todos os objetos contidos no arraylist de nome "listaProdutos"
+     */
 
     public List<Produto> listarProduto() {
 
         return this.listaProdutos;
     }
+    
+    /**
+     * Método para modificar um produto já cadastrado.
+     * @param produto
+     * @return Produto com as modificações feitas pelo usuário.
+     */
 
     public boolean alterarProduto(Produto produto) {
         for (Produto produto1 : listaProdutos) {

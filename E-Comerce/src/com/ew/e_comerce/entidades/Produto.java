@@ -4,6 +4,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Essa classe contém dados de cada produto da loja;
+ * @author Eríclys e Wanileton
+ * @version 1.0
+ */
+
 public class Produto {
     private int id;
     private String nome;
@@ -16,11 +22,44 @@ public class Produto {
     private String codBarras;
     private ArrayList<Usuario> usuario;
     private ArrayList<Categoria> categoria;
+    
+    /**
+     * Construtor default da classe "Produto"
+     */
 
     public Produto() {
         
     }
+    
+    /**
+     * Construtor da classe "Produto"
+     * @param id Atributo que representa a identificação para o produto
+     * @param nome Atributo que representa o nome para a produto
+     * @param descricao Atributo que representa a descrição para o produto
+     * @param slug Atributo que representa o endereço web para o produto
+     * @param dtInclusao Atributo que representa a data de inclusão para o produto
+     * @param dtUpdate Atributo que representa a data de atualização para o produto
+     * @param quantEstoque Atributo que representa a quantidade em estoque para o produto
+     * @param preco Atributo que representa o preço para o produto
+     * @param codBarras Atributo que representa o código de barras para o produto
+     * @param usuario Atributo que armazena o identificador do Usuário que cadastra um produto
+     * @param categoria Atributo que armazena o identificador da categoria a qual pertence um produto
+     */
 
+    public Produto(int id, String nome, String descricao, String slug, LocalDate dtInclusao, LocalDate dtUpdate, int quantEstoque, float preco, String codBarras, ArrayList<Usuario> usuario, ArrayList<Categoria> categoria) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.slug = slug;
+        this.dtInclusao = dtInclusao;
+        this.dtUpdate = dtUpdate;
+        this.quantEstoque = quantEstoque;
+        this.preco = preco;
+        this.codBarras = codBarras;
+        this.usuario = usuario;
+        this.categoria = categoria;
+    }
+    
     public int getId() {
         return id;
     }
@@ -177,11 +216,5 @@ public class Produto {
     @Override
     public String toString() {
         return "(" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", slug=" + slug + ", Data de Inclusão=" + dtInclusao + ", Data de Update=" + dtUpdate + ", Quantidae em estoque=" + quantEstoque + ", Preço=" + preco + ", Codigo de barras=" + codBarras + ", usuario=" + usuario + ", categoria=" + categoria + ')';
-    }
-
- 
-
-    
-    
-    
+    }   
 }

@@ -3,6 +3,12 @@ package com.ew.e_comerce.entidades;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Relação que armazena dados de cada fornecedor de produtos da loja;
+ * @author Eríclys e Wanileton
+ * @version 1.0
+ */
+
 public class Fornecedor {
 
     private int id;
@@ -17,6 +23,22 @@ public class Fornecedor {
     private String cep;
     private int numero;
     private ArrayList<Usuario> usuario;
+    
+    /**
+     * Contrutor da classe "Fornecedor"
+     * @param id Atributo que representa a identificação para o fornecedor
+     * @param cnpj Atributo que representa o cnpj do fornecedor
+     * @param email Atributo que representa o email do fornecedor
+     * @param nome Atributo que representa o nome do fornecedor
+     * @param incriEst Atributo que representa a inscrição estadual do fornecedor
+     * @param telefone Atributo que representa o telefone do fornecedor
+     * @param estado Atributo que representa o estado de localização do fornecedor
+     * @param cidade Atributo que representa a cidade de localização do fornecedor
+     * @param rua Atributo que representa a rua de localização do fornecedor
+     * @param cep Atributo que representa o cep de localização do fornecedor
+     * @param numero Atributo que armazena o número da empresa referente ao endereço do fornecedor
+     * @param usuario Atributo que armazena o identificador do usuário que cadastra um fornecedor
+     */
 
     public Fornecedor(int id, String cnpj, String email, String nome, String incriEst, String telefone, String estado, String cidade, String rua, String cep, int numero, ArrayList<Usuario> usuario) {
         this.id = id;
@@ -201,8 +223,5 @@ public class Fornecedor {
     @Override
     public String toString() {
         return "Fornecedor{" + "id=" + id + ", cnpj=" + cnpj + ", email=" + email + ", nome=" + nome + ", incriEst=" + incriEst + ", telefone=" + telefone + ", estado=" + estado + ", cidade=" + cidade + ", rua=" + rua + ", cep=" + cep + ", numero=" + numero + ", usuario=" + usuario + '}';
-    }
-
-    
-    
+    }  
 }

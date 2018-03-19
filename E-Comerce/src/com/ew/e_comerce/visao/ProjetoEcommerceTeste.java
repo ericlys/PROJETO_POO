@@ -64,17 +64,18 @@ public class ProjetoEcommerceTeste {
             return null;
         }
         
+        input.nextLine();
         System.out.println("Digite o nome: ");
-        produto.setNome(input.next());
-        
+        produto.setNome(input.nextLine());
+
         System.out.println("Digite o descrição: ");
-        produto.setDescricao(input.next());
+        produto.setDescricao(input.nextLine());
         
         System.out.println("Digite o slug: ");
-        produto.setSlug(input.next());
+        produto.setSlug(input.nextLine());
         
         produto.setDtInclusao(LocalDate.now());
-        
+      
         produto.setDtUpdate(LocalDate.now());
         
         System.out.println("Digite a quatidade disponivel: ");

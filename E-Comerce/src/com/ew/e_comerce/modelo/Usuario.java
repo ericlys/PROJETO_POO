@@ -16,7 +16,7 @@ public class Usuario {
     private String email;
     private String senha;
     private LocalDate dtCriacao;
-    private String permissao; //usuario, administrador....
+    private String permissao; //cliente ou administrador
     
     /**
      * Construtor da classe "Usuario"

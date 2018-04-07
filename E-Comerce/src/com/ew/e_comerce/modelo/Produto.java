@@ -1,4 +1,4 @@
-package com.ew.e_comerce.entidades;
+package com.ew.e_comerce.modelo;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

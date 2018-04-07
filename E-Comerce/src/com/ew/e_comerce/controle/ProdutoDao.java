@@ -1,8 +1,8 @@
-package com.ew.e_comerce.dao;
+package com.ew.e_comerce.controle;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.ew.e_comerce.entidades.Produto;
+import com.ew.e_comerce.modelo.Produto;
 
 /**
  * Essa classe contém os métodos CRUD para a classe "Produto".

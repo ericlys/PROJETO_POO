@@ -5,10 +5,15 @@
  */
 package com.ew.e_comerce.visao;
 
+import com.ew.e_comerce.controle.UsuarioDaoArquivo;
+import com.ew.e_comerce.modelo.Usuario;
 import com.sun.istack.internal.logging.Logger;
 import java.awt.Color;
 import java.awt.Point;
+import java.io.IOException;
+import static java.lang.Thread.sleep;
 import java.util.logging.Level;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -17,12 +22,21 @@ import javax.swing.JTextField;
  * @author ericl
  */
 public class Login extends javax.swing.JFrame {
+
     private Point point = new Point();
+    private UsuarioDaoArquivo userdao;
+
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+
+        try {
+            userdao = new UsuarioDaoArquivo();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao abrir arquivo");
+        }
     }
 
     /**
@@ -171,7 +185,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -179,52 +193,59 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       Point p = this. getLocation();
-       Login login = this;
-       new Thread(){
-           @Override
-        public void run(){
-           try{
-                for( int i = 0; i<6 ;i++){
-                    login.setLocation(p.x - 10, p.y);
-                    sleep(20);
-                    login.setLocation(p.x +10, p.y);
-                    sleep(20);
-                }
-                login.setLocation(p.x, p.y);
-           }catch(InterruptedException ex){
-               java.util.logging.Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-           }
+
+        Usuario usuario = null;
+
+        try {
+            usuario = userdao.buscar(jTextField1.getText());
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-       }.start();
+
+        if (usuario == null) {
+            vibrarerro();
+            JOptionPane.showMessageDialog(null, "Usuário não encontrado");
+        } else {
+            String senha = new String(jPasswordField1.getPassword());
+            
+            if (usuario.getSenha().equals(senha) && usuario.getEmail().equals(jTextField1.getText())){
+                   JOptionPane.showMessageDialog(null, "Ok");
+            }else {
+                    JOptionPane.showMessageDialog(null, "Senha incorreta");
+                    vibrarerro();
+                }
+        }
+            
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-         jButton1.setBackground(new Color(235,235,235));
-         jButton1.setForeground(new Color(52,153,255));
+        jButton1.setBackground(new Color(235, 235, 235));
+        jButton1.setForeground(new Color(52, 153, 255));
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
-        jButton2.setBackground(new Color(235,235,235));
-        jButton2.setForeground(new Color(217,11,51));
+        jButton2.setBackground(new Color(235, 235, 235));
+        jButton2.setForeground(new Color(217, 11, 51));
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        jButton1.setBackground(new Color(52,153,255));
+        jButton1.setBackground(new Color(52, 153, 255));
         jButton1.setForeground(Color.WHITE);
     }//GEN-LAST:event_jButton1MouseExited
 
     private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
-        jButton2.setBackground(new Color(217,11,51));
+        jButton2.setBackground(new Color(217, 11, 51));
         jButton2.setForeground(Color.WHITE);
     }//GEN-LAST:event_jButton2MouseExited
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        
+
     }//GEN-LAST:event_formMouseClicked
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-       point.x = evt.getX();
+        point.x = evt.getX();
         point.y = evt.getY();
     }//GEN-LAST:event_formMousePressed
 
@@ -236,7 +257,7 @@ public class Login extends javax.swing.JFrame {
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         CadastroUsuario cadastro = new CadastroUsuario(this);
         cadastro.setVisible(true);
-        this.setVisible(false);  
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
@@ -286,4 +307,25 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    private void vibrarerro() {
+        Point p = this.getLocation();
+            Login login = this;
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        for (int i = 0; i < 6; i++) {
+                            login.setLocation(p.x - 10, p.y);
+                            sleep(20);
+                            login.setLocation(p.x + 10, p.y);
+                            sleep(20);
+                        }
+                        login.setLocation(p.x, p.y);
+                    } catch (InterruptedException ex) {
+                        java.util.logging.Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }.start();
+    }
 }

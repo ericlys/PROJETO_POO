@@ -149,6 +149,6 @@ public class Usuario implements Serializable {
         return "Usuario{" + "nome=" + nome + ", sobrenome=" + sobrenome + ", email=" + email + ", senha=" + senha + ", dtCriacao=" + dtCriacao + ", permissao=" + permissao + '}';
     }
 
-    
+  
 }
 

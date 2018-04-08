@@ -5,20 +5,47 @@
  */
 package com.ew.e_comerce.visao;
 
+import com.ew.e_comerce.controle.UsuarioDaoArquivo;
+import com.ew.e_comerce.modelo.Usuario;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.logging.Level;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author ericl
  */
 public class CadastroUsuario extends javax.swing.JFrame {
+
     private Point point;
+    private Login parent;
+    private UsuarioDaoArquivo userdao;
+
     /**
      * Creates new form CadastroUsuario
      */
-    public CadastroUsuario() {
+    CadastroUsuario(Login aThis) {
         this.point = new Point();
+        this.parent = aThis;
+        initComponents();
+        
+        jRadioButton4.setSelected(true);
+        buttonGroup1.add(jRadioButton4);
+        buttonGroup1.add(jRadioButton5);
+        
+        try {
+            userdao = new UsuarioDaoArquivo();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao abrir arquivo");
+        }
+       
+    }
+
+    public CadastroUsuario() {
         initComponents();
     }
 
@@ -31,6 +58,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
@@ -51,9 +79,14 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jRadioButton5 = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro\n");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jPanel1.setLayout(null);
@@ -139,7 +172,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(217, 81, 51));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Cancelar");
+        jButton2.setText("Sair");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -200,33 +233,55 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         Point p = this. getLocation();
-         CadastroUsuario cadastroUser = this;
-         new Thread(){
-           @Override
-         public void run(){
-           try{
-                for( int i = 0; i<6 ;i++){
-                    cadastroUser.setLocation(p.x - 10, p.y);
-                    sleep(20);
-                    cadastroUser.setLocation(p.x +10, p.y);
-                    sleep(20);
+        Point p = this.getLocation();
+        CadastroUsuario cadastroUser = this;
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    for (int i = 0; i < 6; i++) {
+                        cadastroUser.setLocation(p.x - 10, p.y);
+                        sleep(20);
+                        cadastroUser.setLocation(p.x + 10, p.y);
+                        sleep(20);
+                    }
+                    cadastroUser.setLocation(p.x, p.y);
+                } catch (InterruptedException ex) {
+                    java.util.logging.Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                cadastroUser.setLocation(p.x, p.y);
-           }catch(InterruptedException ex){
-               java.util.logging.Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-           }
+            }
+        }.start();
+
+        Usuario u = montarObjeto();
+
+        try {
+            if (userdao.salvar(u)) {
+                JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
+                System.out.println(u.toString());
+            } else {
+                JOptionPane.showMessageDialog(null, "Ja existe um usuario com esse email cadastrado");
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "classe não encontrada");
+        } catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null,"Senhas não conferem");
         }
-       }.start();                
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        parent.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton4ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        parent.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -264,6 +319,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -284,4 +340,37 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+
+    private Usuario montarObjeto() {
+        Usuario u = new Usuario();
+        
+        u.setNome(jTextField2.getText());
+        
+        u.setSobrenome(jTextField3.getText());
+        
+        u.setEmail(jTextField1.getText());
+        
+        
+        
+        String senha = new String(jPasswordField1.getPassword());
+        
+        String senha2 = new String(jPasswordField2.getPassword());
+        
+        if (senha.equals(senha2)){
+            u.setSenha(senha);
+        }else{
+            return null;
+        }
+        
+        u.setDtCriação(LocalDate.now());
+        
+        if(jRadioButton4.isSelected()){
+            u.setPermissao(jRadioButton4.getText());
+        }else if(jRadioButton5.isSelected()){
+            u.setPermissao(jRadioButton5.getText());
+        }
+        
+        return u;
+    }
+
 }

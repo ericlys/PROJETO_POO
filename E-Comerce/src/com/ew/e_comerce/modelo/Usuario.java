@@ -1,6 +1,8 @@
 package com.ew.e_comerce.modelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * Relação que armazena dados de cada usuário da loja;
@@ -8,9 +10,8 @@ import java.time.LocalDate;
  * @version 1.0
  */
 
-public class Usuario {
+public class Usuario implements Serializable {
 
-    private String id;
     private String nome;
     private String sobrenome;
     private String email;
@@ -20,7 +21,6 @@ public class Usuario {
     
     /**
      * Construtor da classe "Usuario"
-     * @param id Atributo que representa a identificação do usuário
      * @param nome Atributo que representa o nome do usuário
      * @param sobrenome Atributo que representa o sobrenome do usuário
      * @param email Atributo que representa o email do usuário
@@ -29,8 +29,8 @@ public class Usuario {
      * @param permissao Atributo que armazena a permissão para o perfil do usuário
      */
 
-    public Usuario(String id, String nome, String sobrenome, String email, String senha, LocalDate dtCriacao, String permissao) {
-        this.id = id;
+    public Usuario( String nome, String sobrenome, String email, String senha, LocalDate dtCriacao, String permissao) {
+  
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;
@@ -39,9 +39,11 @@ public class Usuario {
         this.permissao = permissao;
     }
 
-    public String getId() {
-        return id;
+    public Usuario() {
+ 
     }
+
+   
 
     public String getNome() {
         return nome;
@@ -97,5 +99,56 @@ public class Usuario {
         this.dtCriacao = dtCriação;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 17 * hash + Objects.hashCode(this.nome);
+        hash = 17 * hash + Objects.hashCode(this.sobrenome);
+        hash = 17 * hash + Objects.hashCode(this.email);
+        hash = 17 * hash + Objects.hashCode(this.senha);
+        hash = 17 * hash + Objects.hashCode(this.dtCriacao);
+        hash = 17 * hash + Objects.hashCode(this.permissao);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.sobrenome, other.sobrenome)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.senha, other.senha)) {
+            return false;
+        }
+        if (!Objects.equals(this.permissao, other.permissao)) {
+            return false;
+        }
+        if (!Objects.equals(this.dtCriacao, other.dtCriacao)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "nome=" + nome + ", sobrenome=" + sobrenome + ", email=" + email + ", senha=" + senha + ", dtCriacao=" + dtCriacao + ", permissao=" + permissao + '}';
+    }
+
+    
 }
 

@@ -1,5 +1,6 @@
 package com.ew.e_comerce.modelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -10,7 +11,7 @@ import java.util.Objects;
  * @version 1.0
  */
 
-public class Produto {
+public class Produto implements Serializable{
     private int id;
     private String nome;
     private String descricao;
@@ -19,9 +20,9 @@ public class Produto {
     private LocalDate dtUpdate;
     private int quantEstoque;
     private float preco;
-    private String codBarras;
-    private ArrayList<Usuario> usuario;
-    private ArrayList<Categoria> categoria;
+    private int codBarras;
+    private Usuario usuario;
+    private Categoria categoria;
     
     /**
      * Construtor default da classe "Produto"
@@ -44,9 +45,9 @@ public class Produto {
      * @param codBarras Atributo que representa o código de barras para o produto
      * @param usuario Atributo que armazena o identificador do Usuário que cadastra um produto
      * @param categoria Atributo que armazena o identificador da categoria a qual pertence um produto
-     */
+     **/
 
-    public Produto(int id, String nome, String descricao, String slug, LocalDate dtInclusao, LocalDate dtUpdate, int quantEstoque, float preco, String codBarras, ArrayList<Usuario> usuario, ArrayList<Categoria> categoria) {
+    public Produto(int id, String nome, String descricao, String slug, LocalDate dtInclusao, LocalDate dtUpdate, int quantEstoque, float preco, int codBarras, Usuario usuario, Categoria categoria) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -60,6 +61,8 @@ public class Produto {
         this.categoria = categoria;
     }
     
+    
+
     public int getId() {
         return id;
     }
@@ -124,44 +127,44 @@ public class Produto {
         this.preco = preco;
     }
 
-    public String getCodBarras() {
+    public int getCodBarras() {
         return codBarras;
     }
 
-    public void setCodBarras(String codBarras) {
+    public void setCodBarras(int codBarras) {
         this.codBarras = codBarras;
     }
 
-    public ArrayList<Usuario> getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(ArrayList<Usuario> usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
-    public ArrayList<Categoria> getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(ArrayList<Categoria> categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + this.id;
-        hash = 29 * hash + Objects.hashCode(this.nome);
-        hash = 29 * hash + Objects.hashCode(this.descricao);
-        hash = 29 * hash + Objects.hashCode(this.slug);
-        hash = 29 * hash + Objects.hashCode(this.dtInclusao);
-        hash = 29 * hash + Objects.hashCode(this.dtUpdate);
-        hash = 29 * hash + this.quantEstoque;
-        hash = 29 * hash + Float.floatToIntBits(this.preco);
-        hash = 29 * hash + Objects.hashCode(this.codBarras);
-        hash = 29 * hash + Objects.hashCode(this.usuario);
-        hash = 29 * hash + Objects.hashCode(this.categoria);
+        int hash = 3;
+        hash = 89 * hash + this.id;
+        hash = 89 * hash + Objects.hashCode(this.nome);
+        hash = 89 * hash + Objects.hashCode(this.descricao);
+        hash = 89 * hash + Objects.hashCode(this.slug);
+        hash = 89 * hash + Objects.hashCode(this.dtInclusao);
+        hash = 89 * hash + Objects.hashCode(this.dtUpdate);
+        hash = 89 * hash + this.quantEstoque;
+        hash = 89 * hash + Float.floatToIntBits(this.preco);
+        hash = 89 * hash + this.codBarras;
+        hash = 89 * hash + Objects.hashCode(this.usuario);
+        hash = 89 * hash + Objects.hashCode(this.categoria);
         return hash;
     }
 
@@ -186,6 +189,9 @@ public class Produto {
         if (Float.floatToIntBits(this.preco) != Float.floatToIntBits(other.preco)) {
             return false;
         }
+        if (this.codBarras != other.codBarras) {
+            return false;
+        }
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
@@ -193,9 +199,6 @@ public class Produto {
             return false;
         }
         if (!Objects.equals(this.slug, other.slug)) {
-            return false;
-        }
-        if (!Objects.equals(this.codBarras, other.codBarras)) {
             return false;
         }
         if (!Objects.equals(this.dtInclusao, other.dtInclusao)) {
@@ -215,6 +218,6 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "(" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", slug=" + slug + ", Data de Inclusão=" + dtInclusao + ", Data de Update=" + dtUpdate + ", Quantidae em estoque=" + quantEstoque + ", Preço=" + preco + ", Codigo de barras=" + codBarras + ", usuario=" + usuario + ", categoria=" + categoria + ')';
-    }   
+        return "Produto{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", slug=" + slug + ", dtInclusao=" + dtInclusao + ", dtUpdate=" + dtUpdate + ", quantEstoque=" + quantEstoque + ", preco=" + preco + ", codBarras=" + codBarras + ", usuario=" + usuario + ", categoria=" + categoria + '}';
+    }
 }

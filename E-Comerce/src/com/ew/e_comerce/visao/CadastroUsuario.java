@@ -10,6 +10,7 @@ import com.ew.e_comerce.modelo.Usuario;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import static java.lang.Thread.sleep;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.logging.Level;
@@ -32,17 +33,17 @@ public class CadastroUsuario extends javax.swing.JFrame {
         this.point = new Point();
         this.parent = aThis;
         initComponents();
-        
+
         jRadioButton4.setSelected(true);
         buttonGroup1.add(jRadioButton4);
         buttonGroup1.add(jRadioButton5);
-        
+
         try {
             userdao = new UsuarioDaoArquivo();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao abrir arquivo");
         }
-       
+
     }
 
     public CadastroUsuario() {
@@ -233,40 +234,27 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Point p = this.getLocation();
-        CadastroUsuario cadastroUser = this;
-        new Thread() {
-            @Override
-            public void run() {
-                try {
-                    for (int i = 0; i < 6; i++) {
-                        cadastroUser.setLocation(p.x - 10, p.y);
-                        sleep(20);
-                        cadastroUser.setLocation(p.x + 10, p.y);
-                        sleep(20);
-                    }
-                    cadastroUser.setLocation(p.x, p.y);
-                } catch (InterruptedException ex) {
-                    java.util.logging.Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }.start();
 
         Usuario u = montarObjeto();
 
         try {
-            if (userdao.salvar(u)) {
-                JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
-                System.out.println(u.toString());
+            if (!"".equals(u.getNome()) && !"".equals(u.getEmail()) && !"".equals(u.getSobrenome()) && !"".equals(u.getSenha())) {
+                if (userdao.salvar(u)) {
+                    JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ja existe um usuario com esse email cadastrado");
+                    vibrar();
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "Ja existe um usuario com esse email cadastrado");
+                JOptionPane.showMessageDialog(null, "preencha todos os campos.");
+                vibrar();
             }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao ler arquivo");
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "classe não encontrada");
-        } catch (NullPointerException ex){
-            JOptionPane.showMessageDialog(null,"Senhas não conferem");
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Senhas não conferem");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -343,34 +331,53 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     private Usuario montarObjeto() {
         Usuario u = new Usuario();
-        
+
         u.setNome(jTextField2.getText());
-        
+
         u.setSobrenome(jTextField3.getText());
-        
+
         u.setEmail(jTextField1.getText());
-        
-        
-        
+
         String senha = new String(jPasswordField1.getPassword());
-        
+
         String senha2 = new String(jPasswordField2.getPassword());
-        
-        if (senha.equals(senha2)){
+
+        if (senha.equals(senha2)) {
             u.setSenha(senha);
-        }else{
+        } else {
             return null;
         }
-        
+
         u.setDtCriação(LocalDate.now());
-        
-        if(jRadioButton4.isSelected()){
+
+        if (jRadioButton4.isSelected()) {
             u.setPermissao(jRadioButton4.getText());
-        }else if(jRadioButton5.isSelected()){
+        } else if (jRadioButton5.isSelected()) {
             u.setPermissao(jRadioButton5.getText());
         }
-        
+
         return u;
+    }
+
+    private void vibrar() {
+        Point p = this.getLocation();
+        CadastroUsuario cadastroUser = this;
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    for (int i = 0; i < 6; i++) {
+                        cadastroUser.setLocation(p.x - 10, p.y);
+                        sleep(20);
+                        cadastroUser.setLocation(p.x + 10, p.y);
+                        sleep(20);
+                    }
+                    cadastroUser.setLocation(p.x, p.y);
+                } catch (InterruptedException ex) {
+                    java.util.logging.Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }.start();
     }
 
 }

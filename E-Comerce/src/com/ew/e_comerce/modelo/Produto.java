@@ -20,7 +20,7 @@ public class Produto implements Serializable{
     private LocalDate dtUpdate;
     private int quantEstoque;
     private float preco;
-    private int codBarras;
+    private long codBarras;
     private Usuario usuario;
     private Categoria categoria;
     
@@ -47,7 +47,8 @@ public class Produto implements Serializable{
      * @param categoria Atributo que armazena o identificador da categoria a qual pertence um produto
      **/
 
-    public Produto(int id, String nome, String descricao, String slug, LocalDate dtInclusao, LocalDate dtUpdate, int quantEstoque, float preco, int codBarras, Usuario usuario, Categoria categoria) {
+
+    public Produto(int id, String nome, String descricao, String slug, LocalDate dtInclusao, LocalDate dtUpdate, int quantEstoque, float preco, long codBarras, Usuario usuario, Categoria categoria) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -60,8 +61,6 @@ public class Produto implements Serializable{
         this.usuario = usuario;
         this.categoria = categoria;
     }
-    
-    
 
     public int getId() {
         return id;
@@ -127,11 +126,11 @@ public class Produto implements Serializable{
         this.preco = preco;
     }
 
-    public int getCodBarras() {
+    public long getCodBarras() {
         return codBarras;
     }
 
-    public void setCodBarras(int codBarras) {
+    public void setCodBarras(long codBarras) {
         this.codBarras = codBarras;
     }
 
@@ -153,18 +152,18 @@ public class Produto implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + this.id;
-        hash = 89 * hash + Objects.hashCode(this.nome);
-        hash = 89 * hash + Objects.hashCode(this.descricao);
-        hash = 89 * hash + Objects.hashCode(this.slug);
-        hash = 89 * hash + Objects.hashCode(this.dtInclusao);
-        hash = 89 * hash + Objects.hashCode(this.dtUpdate);
-        hash = 89 * hash + this.quantEstoque;
-        hash = 89 * hash + Float.floatToIntBits(this.preco);
-        hash = 89 * hash + this.codBarras;
-        hash = 89 * hash + Objects.hashCode(this.usuario);
-        hash = 89 * hash + Objects.hashCode(this.categoria);
+        int hash = 7;
+        hash = 43 * hash + this.id;
+        hash = 43 * hash + Objects.hashCode(this.nome);
+        hash = 43 * hash + Objects.hashCode(this.descricao);
+        hash = 43 * hash + Objects.hashCode(this.slug);
+        hash = 43 * hash + Objects.hashCode(this.dtInclusao);
+        hash = 43 * hash + Objects.hashCode(this.dtUpdate);
+        hash = 43 * hash + this.quantEstoque;
+        hash = 43 * hash + Float.floatToIntBits(this.preco);
+        hash = 43 * hash + (int) (this.codBarras ^ (this.codBarras >>> 32));
+        hash = 43 * hash + Objects.hashCode(this.usuario);
+        hash = 43 * hash + Objects.hashCode(this.categoria);
         return hash;
     }
 
@@ -220,4 +219,7 @@ public class Produto implements Serializable{
     public String toString() {
         return "Produto{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", slug=" + slug + ", dtInclusao=" + dtInclusao + ", dtUpdate=" + dtUpdate + ", quantEstoque=" + quantEstoque + ", preco=" + preco + ", codBarras=" + codBarras + ", usuario=" + usuario + ", categoria=" + categoria + '}';
     }
+    
+    
+
 }

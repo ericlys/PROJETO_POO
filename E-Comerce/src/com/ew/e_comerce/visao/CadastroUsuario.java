@@ -143,11 +143,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jPanel1.add(jTextField1);
-        jTextField1.setBounds(180, 170, 230, 22);
+        jTextField1.setBounds(180, 170, 230, 20);
 
         jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jPanel1.add(jTextField2);
-        jTextField2.setBounds(180, 90, 230, 22);
+        jTextField2.setBounds(180, 90, 230, 20);
 
         jTextField3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +156,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jTextField3);
-        jTextField3.setBounds(180, 130, 230, 22);
+        jTextField3.setBounds(180, 130, 230, 20);
 
         jButton1.setBackground(new java.awt.Color(52, 153, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -168,7 +168,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(120, 390, 110, 29);
+        jButton1.setBounds(120, 390, 110, 30);
 
         jButton2.setBackground(new java.awt.Color(217, 81, 51));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -180,7 +180,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(280, 390, 110, 29);
+        jButton2.setBounds(280, 390, 110, 30);
 
         jPasswordField1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
@@ -189,11 +189,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jPasswordField1);
-        jPasswordField1.setBounds(180, 210, 230, 22);
+        jPasswordField1.setBounds(180, 210, 230, 20);
 
         jPasswordField2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jPanel1.add(jPasswordField2);
-        jPasswordField2.setBounds(180, 250, 230, 22);
+        jPasswordField2.setBounds(180, 250, 230, 20);
 
         jRadioButton4.setBackground(new java.awt.Color(0, 107, 139));
         jRadioButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -205,23 +205,23 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jRadioButton4);
-        jRadioButton4.setBounds(190, 320, 71, 29);
+        jRadioButton4.setBounds(190, 320, 71, 28);
 
         jRadioButton5.setBackground(new java.awt.Color(0, 107, 139));
         jRadioButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jRadioButton5.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton5.setText("Administrador");
         jPanel1.add(jRadioButton5);
-        jRadioButton5.setBounds(280, 320, 123, 29);
+        jRadioButton5.setBounds(280, 320, 122, 28);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ew/e_comerce/imagens/login.jpg"))); // NOI18N
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 520, 450);
+        jLabel2.setBounds(0, 0, 520, 470);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 520, 450);
+        jPanel1.setBounds(0, 0, 520, 460);
 
-        setSize(new java.awt.Dimension(521, 486));
+        setSize(new java.awt.Dimension(526, 486));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

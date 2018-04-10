@@ -31,26 +31,43 @@ public class ProdutoDaoArquivo {
     /**
      * Método para salvar o registro do produto fornecido pelo usuário.
      *
-     * @param produto
-     * @return False se não for possível adicionar a lista e true se for
+     * @param p
+     * @return 1 se não for possível adicionar a lista e 0 se for
      * possível.
+     * @throws java.io.IOException
+     * @throws java.lang.ClassNotFoundException
      */
-    public boolean salvar(Produto p) throws IOException, ClassNotFoundException {
+    public int salvar(Produto p) throws IOException, ClassNotFoundException {
         List<Produto> produtos = listar();
 
         if (buscar(p.getId()) == null) {
+            if(buscar(p.getCodBarras()) == null){
             if (produtos.add(p)) {
                 atualizarArquivo(produtos);
-                return true;
+                return 0; //cadastrado com sucesso
             } else {
-                return false;
+                return 1; // erro no cadastro
             }
         } else {
-            return false;
+            return 2; // já existe um produto com esse cod de barras
         }
 
     }
+        return 3;  // já existe um produto com esse identificador
+    }
+    
+    public Produto buscar(long codigoBarras) throws IOException, ClassNotFoundException {
+        List<Produto> produtos = listar();
 
+        for (Produto p : produtos) {
+            if (p.getCodBarras()== codigoBarras){
+                return p;
+            }
+        }
+        return null;
+    }
+    
+    
     public Produto buscar(int codigo) throws IOException, ClassNotFoundException {
         List<Produto> produtos = listar();
 
@@ -61,13 +78,16 @@ public class ProdutoDaoArquivo {
         }
         return null;
     }
+    
 
     /**
      * Método para remover um produto já cadastrado.
      *
-     * @param id
+     * @param p
      * @return Se o id recebido for igual ao id de um dos produtos, este será
      * removido.
+     * @throws java.io.IOException
+     * @throws java.lang.ClassNotFoundException
      */
     public boolean deletar(Produto p) throws IOException, ClassNotFoundException {
 
@@ -85,6 +105,8 @@ public class ProdutoDaoArquivo {
      * Método para listar todos os produtos cadastrados.
      *
      * @return Todos os objetos contidos no arraylist de nome "listaProdutos"
+     * @throws java.io.IOException
+     * @throws java.lang.ClassNotFoundException
      */
     public List<Produto> listar() throws IOException, ClassNotFoundException {
 
@@ -101,8 +123,10 @@ public class ProdutoDaoArquivo {
     /**
      * Método para modificar um produto já cadastrado.
      *
-     * @param produto
+     * @param p
      * @return Produto com as modificações feitas pelo usuário.
+     * @throws java.io.IOException
+     * @throws java.lang.ClassNotFoundException
      */
     
     public boolean atualizar(Produto p) throws IOException, ClassNotFoundException {
@@ -121,10 +145,9 @@ public class ProdutoDaoArquivo {
 
     private void atualizarArquivo(List<Produto> produtos) throws IOException, ClassNotFoundException {
 
-        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
-
-        out.writeObject(produtos);
-        out.close();
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file))) {
+            out.writeObject(produtos);
+        }
 
     }
 }

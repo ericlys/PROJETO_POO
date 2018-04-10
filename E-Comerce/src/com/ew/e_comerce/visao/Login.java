@@ -25,6 +25,7 @@ public class Login extends javax.swing.JFrame {
 
     private Point point = new Point();
     private UsuarioDaoArquivo userdao;
+    private TelaInicial servicos;
 
     /**
      * Creates new form Login
@@ -211,7 +212,19 @@ public class Login extends javax.swing.JFrame {
             String senha = new String(jPasswordField1.getPassword());
             
             if (usuario.getSenha().equals(senha) && usuario.getEmail().equals(jTextField1.getText())){
-                   JOptionPane.showMessageDialog(null, "Ok");
+                if("Administrador".equals(usuario.getPermissao())){
+                   if(servicos == null){
+                       servicos = new TelaInicial();
+                       servicos.setVisible(true);
+                       this.setVisible(false);
+                       servicos.usuarioNome(usuario);
+                   }else{
+                       servicos.setVisible(true);
+                       servicos.setState(TelaInicial.NORMAL);
+                   }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Por enquanto, somente administradores possuem acesso.");
+                }
             }else {
                     JOptionPane.showMessageDialog(null, "Senha incorreta");
                     vibrarerro();

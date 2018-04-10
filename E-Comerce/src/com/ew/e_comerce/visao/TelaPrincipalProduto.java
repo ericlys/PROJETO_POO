@@ -8,22 +8,29 @@ package com.ew.e_comerce.visao;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.SwingUtilities;
-import sun.swing.SwingAccessor;
 
 /**
  *
  * @author ericl
  */
 public class TelaPrincipalProduto extends javax.swing.JFrame {
-
+    private TelaInicial inicio;
     /**
      * Creates new form Principal
      */
     CardLayout card;
 
-    public TelaPrincipalProduto() {
+   
+
+    TelaPrincipalProduto(TelaInicial aThis) {
+        this.inicio = aThis;
         initComponents();
         card = (CardLayout) jPanel3.getLayout();
+    }
+    
+     public TelaPrincipalProduto() {
+        initComponents();
+       
     }
 
     /**
@@ -35,6 +42,7 @@ public class TelaPrincipalProduto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToolBar1 = new javax.swing.JToolBar();
         jPanel1 = new javax.swing.JPanel();
         menu = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -46,7 +54,14 @@ public class TelaPrincipalProduto extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jToolBar1.setRollover(true);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         menu.setBackground(new java.awt.Color(65, 105, 225));
         menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -144,7 +159,7 @@ public class TelaPrincipalProduto extends javax.swing.JFrame {
 
         menu.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 210, 40));
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
         jPanel3.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -158,7 +173,7 @@ public class TelaPrincipalProduto extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -194,7 +209,6 @@ public class TelaPrincipalProduto extends javax.swing.JFrame {
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
         telalistaProduto();
         SwingUtilities.updateComponentTreeUI(this);
-       
         
     }//GEN-LAST:event_jPanel4MouseClicked
 
@@ -205,6 +219,10 @@ public class TelaPrincipalProduto extends javax.swing.JFrame {
     private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
         jPanel4.setBackground(new Color(65, 105, 255));
     }//GEN-LAST:event_jPanel4MouseExited
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+       inicio.setVisible(true); 
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -251,6 +269,7 @@ public class TelaPrincipalProduto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JPanel menu;
     // End of variables declaration//GEN-END:variables
 

@@ -11,12 +11,14 @@ import java.util.Objects;
 
 public class ItemPedido {
 
-    private String id;
+    private int id;
     private float desconto;
     private int quantidade;
     private float precototal;
-    private ArrayList<Pedido> pedido;
-    private ArrayList<Produto> produto;
+    private Pedido pedido;
+    private Produto produto;
+
+   
     
     /**
      * Construtor da classe "ItemPedido"
@@ -27,8 +29,7 @@ public class ItemPedido {
      * @param pedido Atributo que armazena o pedido que possui o item pedido
      * @param produto Atributo que armazena o produto que é adicionado ao item_pedido
      */
-
-    public ItemPedido(String id, float desconto, int quantidade, float precototal, ArrayList<Pedido> pedido, ArrayList<Produto> produto) {
+ public ItemPedido(int id, float desconto, int quantidade, float precototal, Pedido pedido, Produto produto) {
         this.id = id;
         this.desconto = desconto;
         this.quantidade = quantidade;
@@ -37,11 +38,16 @@ public class ItemPedido {
         this.produto = produto;
     }
 
-    public String getId() {
+    public ItemPedido() {
+    }
+ 
+ 
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -69,31 +75,31 @@ public class ItemPedido {
         this.precototal = precototal;
     }
 
-    public ArrayList<Pedido> getPedido() {
+    public Pedido getPedido() {
         return pedido;
     }
 
-    public void setPedido(ArrayList<Pedido> pedido) {
+    public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
 
-    public ArrayList<Produto> getProduto() {
+    public Produto getProduto() {
         return produto;
     }
 
-    public void setProduto(ArrayList<Produto> produto) {
+    public void setProduto(Produto produto) {
         this.produto = produto;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.id);
-        hash = 79 * hash + Float.floatToIntBits(this.desconto);
-        hash = 79 * hash + this.quantidade;
-        hash = 79 * hash + Float.floatToIntBits(this.precototal);
-        hash = 79 * hash + Objects.hashCode(this.pedido);
-        hash = 79 * hash + Objects.hashCode(this.produto);
+        int hash = 5;
+        hash = 67 * hash + this.id;
+        hash = 67 * hash + Float.floatToIntBits(this.desconto);
+        hash = 67 * hash + this.quantidade;
+        hash = 67 * hash + Float.floatToIntBits(this.precototal);
+        hash = 67 * hash + Objects.hashCode(this.pedido);
+        hash = 67 * hash + Objects.hashCode(this.produto);
         return hash;
     }
 
@@ -109,6 +115,9 @@ public class ItemPedido {
             return false;
         }
         final ItemPedido other = (ItemPedido) obj;
+        if (this.id != other.id) {
+            return false;
+        }
         if (Float.floatToIntBits(this.desconto) != Float.floatToIntBits(other.desconto)) {
             return false;
         }
@@ -116,9 +125,6 @@ public class ItemPedido {
             return false;
         }
         if (Float.floatToIntBits(this.precototal) != Float.floatToIntBits(other.precototal)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         if (!Objects.equals(this.pedido, other.pedido)) {
@@ -134,8 +140,8 @@ public class ItemPedido {
     public String toString() {
         return "ItemPedido{" + "id=" + id + ", desconto=" + desconto + ", quantidade=" + quantidade + ", precototal=" + precototal + ", pedido=" + pedido + ", produto=" + produto + '}';
     }
-
     
     
+ 
     
 }

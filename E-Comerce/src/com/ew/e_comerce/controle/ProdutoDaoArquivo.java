@@ -20,6 +20,12 @@ public class ProdutoDaoArquivo {
 
     private final File file;
 
+    /**
+     * Metodo para criar ou abrir arquivo onde sera salvo os dados sobre os
+     * Produtos
+     *
+     * @throws IOException - se houver erro na leitura do arquivo
+     */
     public ProdutoDaoArquivo() throws IOException {
         file = new File("src\\com\\ew\\e_comerce\\arquivos\\Produtos.bin");
 
@@ -31,9 +37,8 @@ public class ProdutoDaoArquivo {
     /**
      * Método para salvar o registro do produto fornecido pelo usuário.
      *
-     * @param p
-     * @return 1 se não for possível adicionar a lista e 0 se for
-     * possível.
+     * @param p - produto a ser salvo
+     * @return 1 se não for possível adicionar a lista e 0 se for possível.
      * @throws java.io.IOException
      * @throws java.lang.ClassNotFoundException
      */
@@ -41,49 +46,63 @@ public class ProdutoDaoArquivo {
         List<Produto> produtos = listar();
 
         if (buscar(p.getId()) == null) {
-            if(buscar(p.getCodBarras()) == null){
-            if (produtos.add(p)) {
-                atualizarArquivo(produtos);
-                return 0; //cadastrado com sucesso
+            if (buscar(p.getCodBarras()) == null) {
+                if (produtos.add(p)) {
+                    atualizarArquivo(produtos);
+                    return 0; //cadastrado com sucesso
+                } else {
+                    return 1; // erro no cadastro
+                }
             } else {
-                return 1; // erro no cadastro
+                return 2; // já existe um produto com esse cod de barras
             }
-        } else {
-            return 2; // já existe um produto com esse cod de barras
-        }
 
-    }
+        }
         return 3;  // já existe um produto com esse identificador
     }
-    
+
+    /**
+     * Metodo que busca o produto pelo codigo de barras
+     *
+     * @param codigoBarras - codigo de barras do produto
+     * @return retorna o produto se houver, caso contrario retorna null
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public Produto buscar(long codigoBarras) throws IOException, ClassNotFoundException {
         List<Produto> produtos = listar();
 
         for (Produto p : produtos) {
-            if (p.getCodBarras()== codigoBarras){
+            if (p.getCodBarras() == codigoBarras) {
                 return p;
             }
         }
         return null;
     }
-    
-    
+
+    /**
+     * Metodo que busca o produto pelo identificador
+     *
+     * @param codigo
+     * @return retorna o produto se houver, caso contrario retorna null
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public Produto buscar(int codigo) throws IOException, ClassNotFoundException {
         List<Produto> produtos = listar();
 
         for (Produto p : produtos) {
-            if (p.getId() == codigo){
+            if (p.getId() == codigo) {
                 return p;
             }
         }
         return null;
     }
-    
 
     /**
      * Método para remover um produto já cadastrado.
      *
-     * @param p
+     * @param p - produto a ser removido
      * @return Se o id recebido for igual ao id de um dos produtos, este será
      * removido.
      * @throws java.io.IOException
@@ -123,12 +142,11 @@ public class ProdutoDaoArquivo {
     /**
      * Método para modificar um produto já cadastrado.
      *
-     * @param p
+     * @param p - produto a ser atulizado
      * @return Produto com as modificações feitas pelo usuário.
      * @throws java.io.IOException
      * @throws java.lang.ClassNotFoundException
      */
-    
     public boolean atualizar(Produto p) throws IOException, ClassNotFoundException {
 
         List<Produto> produtos = listar();

@@ -512,6 +512,7 @@ public class CadastroProduto extends javax.swing.JPanel {
          JOptionPane.showMessageDialog(null, "O produto não foi encontrado ou não está cadastrado no sistema.");
      }else{
          jFormattedTextField1.setText(Long.toString(p.getCodBarras(),0));
+         jFormattedTextField1.setFocusable(true);
          jTextField1.setText(p.getNome());
          jSpinner1.setValue(p.getQuantEstoque());
          jFormattedTextField4.setValue(p.getPreco());

@@ -6,41 +6,44 @@ import java.util.Objects;
 
 /**
  * Essa classe contém dados de cada pedido;
+ *
  * @author Eríclys e Wanileton
  * @version 1.0
  */
-
 public class Pedido {
+
     private int id;
     private String status;
-    private String nfe;
     private LocalDate data;
     private LocalDate hora;
-    private ArrayList<Usuario> usuario;
-    private ArrayList<Destinatario> endereco;
-    private ArrayList<Envio> envio;
-    
+    private Usuario usuario;
+    private Destinatario endereco;
+    private Envio envio;
+
     /**
      * Construtor da classe "Pedido"
+     *
      * @param id Atributo que representa a identificação para o pedido
      * @param status Atributo que representa status para o pedido
-     * @param nfe Nota fiscal eletrônica
      * @param data Atributo que representa data para o pedido
      * @param hora Atributo que representa a hora para o pedido
      * @param usuario Atributo que armazena o Usuário que realizam um pedido
-     * @param endereco Atributo que armazena o endereço para o qual será enviado o pedido
+     * @param endereco Atributo que armazena o endereço para o qual será enviado
+     * o pedido
      * @param envio Atributo que armazena o modo pelo qual o produto foi enviado
      */
-
-    public Pedido(int id, String status, String nfe, LocalDate data, LocalDate hora, ArrayList<Usuario> usuario, ArrayList<Destinatario> endereco, ArrayList<Envio> envio) {
+    public Pedido(int id, String status, LocalDate data, LocalDate hora, Usuario usuario, Destinatario endereco, Envio envio) {
         this.id = id;
         this.status = status;
-        this.nfe = nfe;
         this.data = data;
         this.hora = hora;
         this.usuario = usuario;
         this.endereco = endereco;
         this.envio = envio;
+    }
+
+    public Pedido() {
+        
     }
 
     public int getId() {
@@ -59,14 +62,6 @@ public class Pedido {
         this.status = status;
     }
 
-    public String getNfe() {
-        return nfe;
-    }
-
-    public void setNfe(String nfe) {
-        this.nfe = nfe;
-    }
-
     public LocalDate getData() {
         return data;
     }
@@ -83,27 +78,27 @@ public class Pedido {
         this.hora = hora;
     }
 
-    public ArrayList<Usuario> getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(ArrayList<Usuario> usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
-    public ArrayList<Destinatario> getEndereco() {
+    public Destinatario getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(ArrayList<Destinatario> endereco) {
+    public void setEndereco(Destinatario endereco) {
         this.endereco = endereco;
     }
 
-    public ArrayList<Envio> getEnvio() {
+    public Envio getEnvio() {
         return envio;
     }
 
-    public void setEnvio(ArrayList<Envio> envio) {
+    public void setEnvio(Envio envio) {
         this.envio = envio;
     }
 
@@ -112,7 +107,6 @@ public class Pedido {
         int hash = 3;
         hash = 19 * hash + this.id;
         hash = 19 * hash + Objects.hashCode(this.status);
-        hash = 19 * hash + Objects.hashCode(this.nfe);
         hash = 19 * hash + Objects.hashCode(this.data);
         hash = 19 * hash + Objects.hashCode(this.hora);
         hash = 19 * hash + Objects.hashCode(this.usuario);
@@ -139,9 +133,6 @@ public class Pedido {
         if (!Objects.equals(this.status, other.status)) {
             return false;
         }
-        if (!Objects.equals(this.nfe, other.nfe)) {
-            return false;
-        }
         if (!Objects.equals(this.data, other.data)) {
             return false;
         }
@@ -162,6 +153,6 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido{" + "id=" + id + ", status=" + status + ", nfe=" + nfe + ", data=" + data + ", hora=" + hora + ", usuario=" + usuario + ", endereco=" + endereco + ", envio=" + envio + '}';
-    }   
+        return "Pedido{" + "id=" + id + ", status=" + status + ", data=" + data + ", hora=" + hora + ", usuario=" + usuario + ", endereco=" + endereco + ", envio=" + envio + '}';
+    }
 }

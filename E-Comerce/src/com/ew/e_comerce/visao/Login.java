@@ -26,6 +26,7 @@ public class Login extends javax.swing.JFrame {
     private Point point = new Point();
     private UsuarioDaoArquivo userdao;
     private TelaInicial servicos;
+    private TelaInicialUsuario servicos2;
 
     /**
      * Creates new form Login
@@ -210,27 +211,35 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Usuário não encontrado");
         } else {
             String senha = new String(jPasswordField1.getPassword());
-            
-            if (usuario.getSenha().equals(senha) && usuario.getEmail().equals(jTextField1.getText())){
-                if("Administrador".equals(usuario.getPermissao())){
-                   if(servicos == null){
-                       servicos = new TelaInicial();
-                       servicos.setVisible(true);
-                       this.setVisible(false);
-                       servicos.usuarioNome(usuario);
-                   }else{
-                       servicos.setVisible(true);
-                       servicos.setState(TelaInicial.NORMAL);
-                   }
-                }else{
-                    JOptionPane.showMessageDialog(null, "Por enquanto, somente administradores possuem acesso.");
+
+            if (usuario.getSenha().equals(senha) && usuario.getEmail().equals(jTextField1.getText())) {
+                if ("Administrador".equals(usuario.getPermissao())) {
+                    if (servicos == null) {
+                        servicos = new TelaInicial();
+                        servicos.setVisible(true);
+                        this.setVisible(false);
+                        servicos.usuarioNome(usuario);
+                    } else {
+                        servicos.setVisible(true);
+                        servicos.setState(TelaInicial.NORMAL);
+                    }
+                } else {
+                    if (servicos2 == null) {
+                        servicos2 = new TelaInicialUsuario();
+                        servicos2.setVisible(true);
+                        this.setVisible(false);
+                        servicos2.usuario(usuario);
+                    } else {
+                        servicos2.setVisible(true);
+                        servicos2.setState(TelaInicial.NORMAL);
+                    }
                 }
-            }else {
-                    JOptionPane.showMessageDialog(null, "Senha incorreta");
-                    vibrarerro();
-                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Senha incorreta");
+                vibrarerro();
+            }
         }
-            
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
@@ -323,22 +332,22 @@ public class Login extends javax.swing.JFrame {
 
     private void vibrarerro() {
         Point p = this.getLocation();
-            Login login = this;
-            new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        for (int i = 0; i < 6; i++) {
-                            login.setLocation(p.x - 10, p.y);
-                            sleep(20);
-                            login.setLocation(p.x + 10, p.y);
-                            sleep(20);
-                        }
-                        login.setLocation(p.x, p.y);
-                    } catch (InterruptedException ex) {
-                        java.util.logging.Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        Login login = this;
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    for (int i = 0; i < 6; i++) {
+                        login.setLocation(p.x - 10, p.y);
+                        sleep(20);
+                        login.setLocation(p.x + 10, p.y);
+                        sleep(20);
                     }
+                    login.setLocation(p.x, p.y);
+                } catch (InterruptedException ex) {
+                    java.util.logging.Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }.start();
+            }
+        }.start();
     }
 }

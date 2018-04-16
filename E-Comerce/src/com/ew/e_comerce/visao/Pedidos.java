@@ -17,8 +17,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -225,16 +223,16 @@ public class Pedidos extends javax.swing.JFrame {
                     mostrarNoCarrinho();
                 }
             } catch (IOException ex) {
-                Logger.getLogger(Pedidos.class.getName()).log(Level.SEVERE, null, ex);
+               JOptionPane.showMessageDialog(null, "O produto não foi encontrado ou não está cadastrado no sistema.");
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Pedidos.class.getName()).log(Level.SEVERE, null, ex);
+               JOptionPane.showMessageDialog(null, "O produto não foi encontrado ou não está cadastrado no sistema.");
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

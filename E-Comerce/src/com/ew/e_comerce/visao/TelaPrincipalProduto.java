@@ -5,6 +5,7 @@
  */
 package com.ew.e_comerce.visao;
 
+import com.ew.e_comerce.modelo.Usuario;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.SwingUtilities;
@@ -14,23 +15,26 @@ import javax.swing.SwingUtilities;
  * @author ericl
  */
 public class TelaPrincipalProduto extends javax.swing.JFrame {
+    private Usuario user;
     private TelaInicial inicio;
     /**
      * Creates new form Principal
      */
     CardLayout card;
 
-   
-
-    TelaPrincipalProduto(TelaInicial aThis) {
-        this.inicio = aThis;
-        initComponents();
-        card = (CardLayout) jPanel3.getLayout();
-    }
     
      public TelaPrincipalProduto() {
         initComponents();
        
+    }
+
+    TelaPrincipalProduto(TelaInicial aThis, Usuario usuario) {
+        user = new Usuario();
+        user = usuario;
+        this.inicio = aThis;
+        initComponents();
+        card = (CardLayout) jPanel3.getLayout();
+
     }
 
     /**
@@ -201,7 +205,7 @@ public class TelaPrincipalProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseExited
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
-        telacadastroProduto();
+        telacadastroProduto(user);
         SwingUtilities.updateComponentTreeUI(this);
         
     }//GEN-LAST:event_jPanel2MouseClicked
@@ -273,8 +277,8 @@ public class TelaPrincipalProduto extends javax.swing.JFrame {
     private javax.swing.JPanel menu;
     // End of variables declaration//GEN-END:variables
 
-    public void telacadastroProduto() {
-        CadastroProduto cdp = new CadastroProduto();
+    public void telacadastroProduto(Usuario user1) {
+        CadastroProduto cdp = new CadastroProduto(user1);
         jPanel3.add(cdp, "Cadastro Produto");
         card.show(jPanel3, "Cadastro Produto");
         jPanel2.setBackground(new Color(30, 144, 0));

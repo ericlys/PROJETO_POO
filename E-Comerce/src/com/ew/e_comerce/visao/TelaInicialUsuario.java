@@ -12,7 +12,7 @@ import com.ew.e_comerce.modelo.Usuario;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class TelaInicialUsuario extends javax.swing.JFrame {
-    Usuario user = new Usuario();
+    Usuario user;
     private Login logof;
 
     /**

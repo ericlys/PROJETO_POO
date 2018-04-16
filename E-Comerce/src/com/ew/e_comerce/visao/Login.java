@@ -7,7 +7,6 @@ package com.ew.e_comerce.visao;
 
 import com.ew.e_comerce.controle.UsuarioDaoArquivo;
 import com.ew.e_comerce.modelo.Usuario;
-import com.sun.istack.internal.logging.Logger;
 import java.awt.Color;
 import java.awt.Point;
 import java.io.IOException;
@@ -218,7 +217,7 @@ public class Login extends javax.swing.JFrame {
                         servicos = new TelaInicial();
                         servicos.setVisible(true);
                         this.setVisible(false);
-                        servicos.usuarioNome(usuario);
+                        servicos.usuario(usuario);
                     } else {
                         servicos.setVisible(true);
                         servicos.setState(TelaInicial.NORMAL);

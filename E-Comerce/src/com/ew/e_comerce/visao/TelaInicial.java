@@ -13,10 +13,12 @@ import com.ew.e_comerce.modelo.Usuario;
  */
 public class TelaInicial extends javax.swing.JFrame {
     private Login logof;
+    Usuario usuario;
     /**
      * Creates new form TelaLogin
      */
     public TelaInicial() {
+         usuario = new Usuario();
         initComponents();
     }
 
@@ -106,7 +108,7 @@ public class TelaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        TelaPrincipalProduto cdp = new TelaPrincipalProduto(this);
+        TelaPrincipalProduto cdp = new TelaPrincipalProduto(this, usuario);
         cdp.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -170,5 +172,10 @@ public class TelaInicial extends javax.swing.JFrame {
   public void usuarioNome(Usuario user){
       jLabel5.setText(user.getNome()+" " + user.getSobrenome());
   }
+
+    void usuario(Usuario usuario) {
+       this.usuario = usuario;
+       jLabel5.setText(usuario.getNome() + " " + usuario.getSobrenome());
+    }
 
 }

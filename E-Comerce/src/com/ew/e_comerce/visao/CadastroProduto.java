@@ -7,6 +7,7 @@ package com.ew.e_comerce.visao;
 
 import com.ew.e_comerce.controle.ProdutoDaoArquivo;
 import com.ew.e_comerce.modelo.Produto;
+import com.ew.e_comerce.modelo.Usuario;
 import com.ew.e_comerce.modelo.somentenumeros.SoNumeros;
 import java.awt.Color;
 import java.io.IOException;
@@ -23,11 +24,16 @@ import javax.swing.text.PlainDocument;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class CadastroProduto extends javax.swing.JPanel {
+    private Usuario user = new Usuario();
     private ProdutoDaoArquivo prodao;
     /**
      * Creates new form CadastroProdutoo
+     * @param user1
      */
-    public CadastroProduto() {
+    public CadastroProduto(Usuario user1) {
+        
+        this.user = user1;
+        
         initComponents();
         jTextField3.setDocument(new SoNumeros());
         
@@ -37,6 +43,7 @@ public class CadastroProduto extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Falha ao abrir arquivo");
         }
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -626,7 +633,7 @@ public class CadastroProduto extends javax.swing.JPanel {
         p.setDtUpdate(LocalDate.now());
         p.setSlug(jTextField2.getText());
         p.setCategoria(null);   //(jComboBox1.getClass().asSubclass(Categoria<Categoria>Categoria));  categoria
-        p.setUsuario(null); //usuario logado;
+        p.setUsuario(user); //usuario administrador que casdastrou;
         
         return p;
     }

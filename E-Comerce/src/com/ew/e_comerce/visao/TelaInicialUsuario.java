@@ -9,7 +9,7 @@ import com.ew.e_comerce.modelo.Usuario;
 
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Ericlys e Wanielton
  */
 public class TelaInicialUsuario extends javax.swing.JFrame {
     Usuario user;
@@ -112,7 +112,7 @@ public class TelaInicialUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Pedidos tp = new Pedidos(this,user);
+        TelaPrincipalCompras tp = new TelaPrincipalCompras(this);
         tp.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed

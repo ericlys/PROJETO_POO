@@ -1,0 +1,12 @@
+
+
+
+Equipe: Ericlys e Wanielton
+
+
+
+
+
+
+Pofessor, infelizmente não conseguimos fazer a parte de compra do produto, pois a forma como o senhor pediu a persistência (Em binário ou Texto) trouxe algumas
+complicações enquanto desenvolviamos a parte de buscar o registro do produto. 

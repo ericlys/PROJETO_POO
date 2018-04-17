@@ -150,11 +150,11 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Não possui conta?");
+        jLabel2.setText("não possui conta?");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(130, 330, 120, 20);
+        jLabel2.setBounds(60, 350, 120, 20);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cadastre-se");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -164,7 +164,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(250, 330, 100, 20);
+        jLabel3.setBounds(180, 350, 100, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ew/e_comerce/imagens/login.jpg"))); // NOI18N
         jPanel2.add(jLabel1);

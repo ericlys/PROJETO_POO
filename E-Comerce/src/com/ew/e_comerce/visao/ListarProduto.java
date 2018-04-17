@@ -9,15 +9,13 @@ import com.ew.e_comerce.controle.ProdutoDaoArquivo;
 import com.ew.e_comerce.modelo.Produto;
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Ericlys e Wanielton
  */
 public class ListarProduto extends javax.swing.JPanel {
 

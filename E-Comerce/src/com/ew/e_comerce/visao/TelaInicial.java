@@ -9,7 +9,7 @@ import com.ew.e_comerce.modelo.Usuario;
 
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Ericlys e Wanielton
  */
 public class TelaInicial extends javax.swing.JFrame {
     private Login logof;

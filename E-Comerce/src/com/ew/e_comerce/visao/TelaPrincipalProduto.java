@@ -12,7 +12,7 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author ericl
+ * @author Ericlys e Wanielton
  */
 public class TelaPrincipalProduto extends javax.swing.JFrame {
     private Usuario user;

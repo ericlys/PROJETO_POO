@@ -8,17 +8,15 @@ package com.ew.e_comerce.visao;
 import com.ew.e_comerce.controle.UsuarioDaoArquivo;
 import com.ew.e_comerce.modelo.Usuario;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.logging.Level;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author ericl
+ * @author Ericlys e Wanielton
  */
 public class CadastroUsuario extends javax.swing.JFrame {
 

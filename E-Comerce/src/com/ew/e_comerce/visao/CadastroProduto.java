@@ -21,7 +21,7 @@ import javax.swing.text.PlainDocument;
 
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Ericlys e Wanielton
  */
 public class CadastroProduto extends javax.swing.JPanel {
     private Usuario user = new Usuario();

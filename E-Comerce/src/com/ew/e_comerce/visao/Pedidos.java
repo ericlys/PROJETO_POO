@@ -23,7 +23,7 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Ericlys e Wanielton
  */
 public class Pedidos extends javax.swing.JFrame {
 
